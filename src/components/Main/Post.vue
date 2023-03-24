@@ -1,20 +1,22 @@
 <template>
-	<div v-for="post in posts" :key="post.id" class="post">
-		<!-- <div
-			class="image_post"
-			:style="{ 'background-image': 'url({url})' }"
-		></div> -->
-		<div class="image_post">
+	<div
+		:on-scroll="abc"
+		v-show="active"
+		v-for="post in posts"
+		:key="post.id"
+		class="post"
+	>
+		<!-- <div class="image_post">
 			<img :src="require(`@/assets/${post.image}`)" alt="..." />
+		</div> -->
+		<div class="block_image">
+			<img :src="require(`@/assets/${post.image}`)" alt="" />
 		</div>
-
-		<div class="content_post">
-			<h2>{{ post.title }}</h2>
-			<p>
-				{{ post.description }}
-			</p>
-			<a>Read More</a>
+		<div class="content">
+			<h1>{{ post.title }}</h1>
+			<p>{{ post.description }}</p>
 		</div>
+		<button class="hide" @click="delete_post(post.id)">Hide</button>
 	</div>
 </template>
 <script>
@@ -23,6 +25,7 @@ export default {
 	data() {
 		return {
 			posts: null,
+			active: true,
 		}
 	},
 	mounted() {
@@ -30,61 +33,70 @@ export default {
 			.get('http://localhost:3000/post/')
 			.then(response => (this.posts = response.data))
 	},
+
+	methods: {
+		delete_post(self, id) {
+			axios.delete(`http://localhost:3000/post/${id}`).then(response => {
+				console.log(response)
+			})
+		},
+	},
 }
 </script>
 <style lang="scss" scoped>
 .post {
 	display: flex;
+	justify-content: space-between;
+	color: white;
 	margin: 20px 0;
-	background-color: rgba(255, 255, 255, 0.2);
+	background: rgb(136, 136, 136);
+	background: radial-gradient(
+		circle,
+		rgba(115, 115, 115, 0.168) 0%,
+		rgba(255, 255, 255, 0.173) 100%
+	);
+	border: solid 0px #ffffff43;
+	transition: 0.3s;
+	&:hover {
+		border: solid 2px #ffffff43;
+		transform: scale(105%);
+	}
 	padding: 20px;
 	width: 90%;
-	border-radius: 70px;
-	.image_post {
-		// background-image: url('@/assets/car.jpg');
-		background-size: cover;
-		background-repeat: no-repeat;
-		width: 350px;
-		height: 200px;
-		border-radius: 50px;
-		transition: 0.3s;
-		// &:hover {
-		// 	width: 250px;
-		// 	height: 250px;
-		// }
+	border-radius: 50px;
+
+	.block_image {
+		width: 300px;
 		overflow: hidden;
+		border-radius: 30px;
 
 		img {
 			width: 100%;
 		}
 	}
 
-	.content_post {
-		display: flex;
-		flex-direction: column;
-		// align-items: center;
-		justify-content: center;
-		margin-left: 20px;
-		color: white;
-
-		h2 {
-			font-size: 30px;
+	.hide {
+		align-self: center;
+		width: 100px;
+		height: 40px;
+		border-radius: 20px;
+		color: #fcfcfc;
+		background-color: rgba(194, 37, 37, 0.472);
+		border: none;
+		transition: 0.3s ease;
+		cursor: pointer;
+		&:hover {
+			transform: scale(110%);
+			background-color: rgba(194, 37, 37, 0.611);
+		}
+	}
+	.content {
+		h1 {
+			font-size: 35px;
 		}
 
 		p {
-			margin-top: 5px;
-			width: 80%;
-		}
-
-		a {
-			background-color: #ffffff1d;
-			width: 150px;
-			text-align: center;
-			padding: 10px;
-			border-radius: 100px;
-			backdrop-filter: blur(3px);
-			color: white;
-			margin-top: 20px;
+			width: 600px;
 		}
 	}
 }

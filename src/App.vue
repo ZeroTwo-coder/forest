@@ -20,12 +20,13 @@ export default {
 	},
 
 	data() {
-		return {}
+		return {
+			scroll: null,
+		}
 	},
-	methods: {},
-	setup() {
-		// const app = 2
-		// console.log(app);
+
+	updated() {
+		this.scroll = window.scrollY
 	},
 }
 </script>
