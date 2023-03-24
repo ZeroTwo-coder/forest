@@ -4,7 +4,10 @@
 			class="image_post"
 			:style="{ 'background-image': 'url({url})' }"
 		></div> -->
-		<div class="image_post"></div>
+		<div class="image_post">
+			<img :src="require(`@/assets/${post.image}`)" alt="..." />
+		</div>
+
 		<div class="content_post">
 			<h2>{{ post.title }}</h2>
 			<p>
@@ -20,6 +23,7 @@ export default {
 	data() {
 		return {
 			posts: null,
+			ingurl: 'car.jpg',
 		}
 	},
 	mounted() {
@@ -38,7 +42,7 @@ export default {
 	width: 90%;
 	border-radius: 70px;
 	.image_post {
-		background-image: url('@/assets/car.jpg');
+		// background-image: url('@/assets/car.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
 		width: 350px;
@@ -49,6 +53,11 @@ export default {
 		// 	width: 250px;
 		// 	height: 250px;
 		// }
+		overflow: hidden;
+
+		img {
+			width: 100%;
+		}
 	}
 
 	.content_post {
