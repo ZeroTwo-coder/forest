@@ -4,7 +4,7 @@
 			<Navigation />
 			<Title />
 		</div>
-		<Main/>
+		<Main />
 	</div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
 	components: {
 		Navigation,
 		Title,
-		Main
+		Main,
 	},
 
 	data() {

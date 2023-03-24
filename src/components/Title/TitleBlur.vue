@@ -4,7 +4,7 @@
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 	</div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .blur_title {
 	background-color: rgba(68, 68, 68, 0.112);
 	box-shadow: 0px 15px 30px rgba(97, 97, 97, 0.287);

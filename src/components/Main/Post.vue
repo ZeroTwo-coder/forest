@@ -29,7 +29,7 @@ export default {
 	},
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .post {
 	display: flex;
 	margin: 20px 0;
@@ -38,7 +38,7 @@ export default {
 	width: 90%;
 	border-radius: 70px;
 	.image_post {
-		background-image: url('@/assets/girl.jpg');
+		background-image: url('@/assets/car.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
 		width: 350px;

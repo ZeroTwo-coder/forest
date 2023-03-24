@@ -7,7 +7,7 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .nav_link {
 	display: flex;
 	align-items: center;

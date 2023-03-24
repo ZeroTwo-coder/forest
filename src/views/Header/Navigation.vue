@@ -10,12 +10,13 @@ import Logo from '../../components/Navigation/Logo.vue'
 import Menu from '../../components/Navigation/Menu.vue'
 export default {
 	components: {
-		Logo, Menu
+		Logo,
+		Menu,
 	},
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .nav {
 	&:hover {
 		border: 3px solid rgba(255, 255, 255, 0.161);

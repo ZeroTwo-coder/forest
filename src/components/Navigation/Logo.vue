@@ -4,7 +4,7 @@
 		<h1>Vue</h1>
 	</div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .logo {
 	color: white;
 	align-items: center;
