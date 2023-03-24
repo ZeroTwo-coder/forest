@@ -1,20 +1,34 @@
 <template>
-	<div class="post">
+	<div v-for="post in posts" :key="post.id" class="post">
 		<!-- <div
 			class="image_post"
 			:style="{ 'background-image': 'url({url})' }"
 		></div> -->
 		<div class="image_post"></div>
 		<div class="content_post">
-			<h2>Lorem ipsum dolor sit.</h2>
+			<h2>{{ post.title }}</h2>
 			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis
-				blanditiis, voluptatibus officia reprehenderit est ipsam?
+				{{ post.description }}
 			</p>
 			<a>Read More</a>
 		</div>
 	</div>
 </template>
+<script>
+import axios from 'axios'
+export default {
+	data() {
+		return {
+			posts: null,
+		}
+	},
+	mounted() {
+		axios
+			.get('http://localhost:3000/post/')
+			.then(response => (this.posts = response.data))
+	},
+}
+</script>
 <style lang="scss">
 .post {
 	display: flex;
