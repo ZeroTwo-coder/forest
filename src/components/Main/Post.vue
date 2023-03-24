@@ -23,7 +23,6 @@ export default {
 	data() {
 		return {
 			posts: null,
-			ingurl: 'car.jpg',
 		}
 	},
 	mounted() {
